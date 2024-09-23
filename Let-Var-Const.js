@@ -53,4 +53,3 @@ console.log(c); // 10
 
 console.log(c); // 10 (outer 'c' is unchanged)
 
-0
