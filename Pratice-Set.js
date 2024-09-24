@@ -45,3 +45,86 @@ console.log(dictinary['empathy']); //   the ability to understand and share the 
 
 //  we can use both to types to access the key  
 
+// Q.6 Create a variable with a string value and change its type to a number.
+let c = "123";
+console.log(typeof c); // Output: string
+c = Number(c);
+console.log(typeof c); // Output: number
+console.log(c); // Output: 123
+
+// Explanation: Initially, the variable c is of type string. Using Number(c), the type is changed to number.
+
+
+// Q.7 Create a variable with a number value and change its type to a string.
+let d = 456;
+console.log(typeof d); // Output: number
+d = d.toString();
+console.log(typeof d); // Output: string
+console.log(d); // Output: "456"
+
+// Explanation: Initially, the variable d is of type number. Using toString(), the type is changed to string.
+
+
+// Q.8 Create a function to multiply two numbers and return the result.
+function multiply(x, y) {
+    return x * y;
+}
+console.log(multiply(3, 4)); // Output: 12
+
+// Explanation: The multiply function takes two numbers as arguments and returns their product.
+
+// Q.9 Create an object and use a function to add a new key-value pair.
+let person = {
+    name: "Saad",
+    age: 21
+};
+
+function addKeyValue(obj, key, value) {
+    obj[key] = value;
+}
+
+addKeyValue(person, "city", "Islamabad");
+console.log(person); // Output: { name: 'Saad', age: 21, city: 'Islamabad' }
+
+// Explanation: The addKeyValue function takes an object, key, and value as arguments and adds the key-value pair to the object.
+
+
+// Q.10 Create an array and find the sum of its elements.
+let numbers = [1, 2, 3, 4, 5];
+let sum = 0;
+
+for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+}
+
+console.log(sum); // Output: 15
+
+// Q.11 Create a function that checks if a number is even or odd.
+function isEvenOrOdd(num) {
+    if (num % 2 === 0) {
+        return "Even";
+    } else {
+        return "Odd";
+    }
+}
+
+console.log(isEvenOrOdd(7)); // Output: Odd
+console.log(isEvenOrOdd(12)); // Output: Even
+
+// Q.12 Create a function to count the number of vowels in a string.
+function countVowels(str) {
+    let count = 0;
+    const vowels = "aeiouAEIOU";
+    
+    for (let i = 0; i < str.length; i++) {
+        if (vowels.includes(str[i])) {
+            count++;
+        }
+    }
+    
+    return count;
+}
+
+console.log(countVowels("Hello World")); // Output: 3
+
+// Explanation: The countVowels function counts the number of vowels in the given string.
