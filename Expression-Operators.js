@@ -72,8 +72,7 @@ console.log("x <= y: ", x <= y);      // Output: true
 // Logical Operators
 
 let p = true;
-let q = false;
-
+let q = false
 // Logical AND
 console.log("p && q: ", p && q);  // Output: false
 
