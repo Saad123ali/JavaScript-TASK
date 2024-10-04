@@ -35,3 +35,26 @@ if (age < 13) {
 } else {
     console.log("You are a senior."); // Executed if age is 65 or older
 }
+
+//   4.   switch statement: 
+//        The switch statement evaluates an expression, matching the expression's value to a case clause, and executes the associated block of code.
+switch (true) {
+    case (age < 13):
+        console.log("You are a child."); // Executed if age is less than 13
+        break;
+    case (age >= 13 && age < 18):
+        console.log("You are a teenager."); // Executed if age is between 13 and 17
+        break;
+    case (age >= 18 && age < 65):
+        console.log("You are an adult."); // Executed if age is between 18 and 64
+        break;
+    default:
+        console.log("You are a senior."); // Executed if age is 65 or older
+        break;
+}
+
+//   5.   Ternary operator: 
+//        The ternary operator is a shorthand way of writing an if ... else statement. It takes three operands: a condition, a result for true, and a result for false.
+const category = (age < 18) ? "You are a minor." : "You are an adult.";
+console.log(category); // This will print "You are an adult." if age is 18 or older
+
