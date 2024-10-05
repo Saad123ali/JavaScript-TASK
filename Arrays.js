@@ -49,6 +49,12 @@ for (let i of arr) {
 // array methods in js
 
 
+// array form 
+
+let name = "Saad Ali"
+let a = Array.from(name);
+console.log(a)
+
 let names = ["Saad" , "Ali" , "Hassan"]
 console.log(names)
 
@@ -115,7 +121,7 @@ console.log("Using forEach():");
 no.forEach(function(no) {
     console.log(no * 2);  // Multiply each number by 2
 });
-// 8. map()
+// 8. map()   create new array by pefroming some operation on each array element
 
 let doubled = no.map(function(no) {
     return no * 2;
@@ -124,7 +130,7 @@ let doubled = no.map(function(no) {
 console.log("Using map():");
 console.log(doubled); 
 
-// 9. filter()
+// 9. filter()    filter an array with values that passes the test creates a new array
 
 let filtered = no.filter(function(no) {
     return no > 3;
@@ -133,7 +139,7 @@ let filtered = no.filter(function(no) {
 console.log("Using filter():");
 console.log(filtered); 
 
-// 12. reduce
+// 12. reduce()    reduce function reduce the array and return the singlr value
 
 // syntax  : array.reduce(callback(accumulator, currentValue, currentIndex, array), initialValue)
 
