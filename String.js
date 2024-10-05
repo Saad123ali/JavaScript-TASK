@@ -101,7 +101,7 @@ let bro = "      Ali       "
 console.log(bro.trim())
 
 
-// note  :   string are many methods  search and checkout 
+// note  :   string are many methods  search and checkout
 
 
 
