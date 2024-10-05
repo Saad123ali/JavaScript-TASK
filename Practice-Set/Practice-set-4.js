@@ -33,4 +33,4 @@ console.log(typeof amount)  // number format
 
 let frind = "Pasha"
 frind[3] = "H"
-console.log(frind)  // note string is ambutable so we cannot change
+console.log(frind)  // note string is abmutable so we cannot change
