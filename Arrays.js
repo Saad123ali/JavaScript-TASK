@@ -133,6 +133,49 @@ let filtered = no.filter(function(no) {
 console.log("Using filter():");
 console.log(filtered); 
 
+// 12. reduce
+
+// syntax  : array.reduce(callback(accumulator, currentValue, currentIndex, array), initialValue)
+
+let number = [1, 2, 3, 4, 5];
+
+let sum = number.reduce(function(accumulator, currentValue) {
+    return accumulator + currentValue;
+}, 0);  // 0 is the initial value for the accumulator
+
+console.log("Sum of numbers:");
+console.log(sum);  // Output: 15
+
+
+
+let product = number.reduce(function(accumulator, currentValue) {
+    return accumulator * currentValue;
+}, 1);  // 1 is the initial value for multiplication
+
+console.log("Product of numbers:");
+console.log(product);  // Output: 24
+
+let arrays = [[1, 2], [3, 4], [5, 6]];
+let flattened = arrays.reduce(function(accumulator, currentValue) {
+    return accumulator.concat(currentValue);
+}, []);
+
+console.log("Flattened array:");
+console.log(flattened);  // Output: [1, 2, 3, 4, 5, 6]
+
+let fruites = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+
+let count = fruites.reduce(function(accumulator, fruit) {
+    if (!accumulator[fruit]) {
+        accumulator[fruit] = 1;  // Initialize the count if it doesn't exist
+    } else {
+        accumulator[fruit]++;  // Increment the count if it exists
+    }
+    return accumulator;
+}, {});
+
+console.log("Fruit count:");
+console.log(count);  // Output: { apple: 3, banana: 2, orange: 1 }
 
 // 11 . sort()
 
