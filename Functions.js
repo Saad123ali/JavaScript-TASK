@@ -1,3 +1,8 @@
+//  functions are blocks of code designed to perform a particular task. they are executed when they are invocked / call . whenever needed.
+
+// function  functionName() { do some work}
+// functionName();   function call
+
 // Function to calculate the sum of all numbers from 1 to n
 function calculateSum(n) {
     let sum = 0;
