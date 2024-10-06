@@ -47,3 +47,34 @@ if (isPrime(numberToCheck)) {
 
 let charToCheck = prompt("Enter a character to check if it is a vowel or consonant:");
 console.log(checkVowelOrConsonant(charToCheck)); // Call the function and log the result
+
+
+
+// Higher-order function
+// is a function that either takes one or more functions as arguments , return a fucntion  or both 
+
+
+function applyOperation(arr, operation) {
+    return arr.map(operation);  // Applies the operation to each element of the array
+  }
+  
+  // Operation functions
+  function square(x) {
+    return x * x;
+  }
+  
+  function double(x) {
+    return x * 2;
+  }
+  
+  // Test
+  let numbers = [1, 2, 3, 4, 5];
+  
+  // Apply square operation
+  let squaredNumbers = applyOperation(numbers, square);
+  console.log("Squared Numbers:", squaredNumbers); // [1, 4, 9, 16, 25]
+  
+  // Apply double operation
+  let doubledNumbers = applyOperation(numbers, double);
+  console.log("Doubled Numbers:", doubledNumbers); // [2, 4, 6, 8, 10]
+  
