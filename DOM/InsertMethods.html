@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsertAdjacantHTML</title>
+</head>
+<body>
+    <div id="first">Hey i am first</div>
+    <script>
+        // there are three ways two insert like:
+        // insertAdjacantHTML
+        // insertAdjacantText
+        // insertAdjacantElement
+
+        // this method is used to insert html. the first parameter is a code word , specifying where to insert . must be one of the followig 
+
+        // insert html immediately into element at the end
+        first.insertAdjacentHTML('beforeend', '<div class="test">beforeend</div>');
+
+        // insert html immediately after element
+        first.insertAdjacentHTML('afterend', '<div class="test">afterend</div>');
+
+        // insert html immediately before element
+        first.insertAdjacentHTML('beforebegin', '<div class="test">beforebegin</div>');
+
+        // insert html immediately before at the beginning 
+        first.insertAdjacentHTML('afterbegin', '<div class="test">afterbegin</div>');
+
+        // node removal   -> to remove a node , there's a method node.remove()
+        // first.remove()
+
+    </script>
+</body>
+</html>
