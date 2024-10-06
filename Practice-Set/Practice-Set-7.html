@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice-Set-7</title>
+    <style>
+        nav{
+            display: flex;
+        }
+        nav li {
+            list-style: none;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <nav>
+        <li>Hello</li>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+    </nav> -->
+    <nav>
+        <li>Hello</li>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+    </nav>
+    <table>
+        <td>Hello</td>
+        <tr>Hello 1</tr>
+        <tr>Hello 2</tr>
+        <tr>Hello 3</tr>
+        <tr>Hello 4</tr>
+    </table>
+    <script>
+        // create a navbar and change the color of it first element to red
+
+        // document.getElementsByTagName("nav")[0].firstElementChild.style.color = "red"
+
+        // create a table without tbody Now use " view page source " to check it has a tbody or not
+        // no
+
+        // create an element with 3 childeren now change the color of first and last element to green
+
+        document.getElementsByTagName("nav")[0].firstElementChild.style.color = "green"
+        document.getElementsByTagName("nav")[0].lastElementChild.style.color = "green"
+
+        // write a js code to change background of all li tags to cyan  
+        Array.from(document.getElementsByTagName("li")).forEach(element => {
+            element.style.background = "cyan"
+        });
+
+        // which of the following is used to look for the farthest ancestor that matches a given css selector
+
+        //  none of these
+
+    </script>
+</body>
+</html>
