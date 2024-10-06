@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inner HTML</title>
+</head>
+<body>
+    hello world
+    <span id="first" hidden >hey! <b>this is span tag</b></span>
+    <script>
+
+        //console.log & console.dir
+
+        console.log(document.getElementsByTagName("span")[0]);  //coonsole.log show document tree 
+        console.dir(document.getElementsByTagName("span")[0]);  // console.dir show element as the objectand its properties
+
+        //tagname & nodename
+
+        // used to read tag name of the element
+
+        // tagname -> only exsists for element node
+        // nodename -> defined for any node (text , comment etc.)
+
+        console.log(document.body.firstChild.nodeName)
+        console.log(document.body.firstElementChild.nodeName)
+
+        // innerHtml & outerHtml
+
+        console.log(first.innerHTML)  // innerHtml is only used to get the html inside the element as a string
+
+        let italic = first.innerHTML = "<i>Hi!</i>"
+        console.log(italic)
+
+        // the outerhtml property contain the full html , innerHtml + the element itself
+        console.log(first.outerHTML)  
+        let set = first.outerHTML = "<div>Hi!</div>"
+        console.log(set)
+
+        // note : innerhtml is valid for element nodes for other node types we can use nodevalue or data
+        console.log(document.body.firstChild)
+        console.log(document.body.firstChild.data)
+        console.log(document.body.firstChild.nodeValue)
+
+        // text content 
+        
+        //  provides access to the text inside the element only text , minus all tags
+
+        // console.log(document.body.textContent)
+
+        // hidden property
+        first.hidden = false
+    </script>
+</body>
+</html>

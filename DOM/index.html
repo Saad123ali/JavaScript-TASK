@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Example</title>
+</head>
+
+<body>
+
+    <div id="id1" class="box">
+        <span id="sp1">Hello</span>
+    </div>
+
+    <script>
+
+        // Dom tree refers to the html page where all the nodes are objects. these can be 3 main types pf nodes in the dom 
+        //  1. text nodes 
+        //  2. element nodes 
+        //  3. comment nodes
+
+        //  auto corrections 
+
+        //  if an error coes HTMl is encountered by the browser , it tends to correct it for example. if we put something after the obdy. it is automatically moved insie the body Another example is <table> tag  which must contain <tbody>
+
+        //  walking the dom 
+
+        //<html>
+        // <head>
+        // <title> Hello</title>
+        // </head>
+        // <body>
+        // .
+        // .
+        // .
+        //</body>
+        // </html>
+
+        // 1. Accessing DOM elements
+        // `document.body` to access the body tag
+        // `document.head` to access the head tag
+        // `document.documentElement` to access the root element (html tag)
+
+        console.log(document.body);
+        console.log(document.head);
+        console.log(document.documentElement);
+
+        // If you access `document.body` before the body is loaded, it may return null.
+        // However, in most cases with well-structured HTML, it will not be null.
+
+        // 2. Accessing Children of an Element
+        // Direct and deeply nested elements of an element are its children.
+        // Sibling elements are children of the same parent.
+
+        console.log("Body's last child:", document.body.lastChild); // Logs last child of body
+        console.log("Body's child nodes:", document.body.childNodes); // Logs all child nodes
+
+        let arr = Array.from(document.body.childNodes); // Convert NodeList to array
+        console.log(arr); // Log all child nodes as an array
+
+        // 3. DOM Collection
+        // They are read-only and live (updated automatically when DOM changes)
+        // You can iterate them using a `for...of` loop.
+
+        for (let child of document.body.childNodes) {
+            console.log(child); // Logs each child node
+        }
+
+        // 4. Parent and Sibling of an Element
+        let a = document.body.firstChild;
+        console.log(a.parentNode); // Logs the parent node (document)
+        console.log(a.parentElement); // Logs the parent element, but if it's the root, it will be null.
+
+        console.log(a.nextSibling); // Logs the next sibling node of the first child
+
+        // 5. Element-only Navigation
+        let b = document.body;
+        console.log("First child of body:", b.firstChild); // Logs first child (could be text or element)
+        console.log("First element child of body:", b.firstElementChild); // Logs first child that is an element
+
+        // 6. Change the background color of the first element child of body
+        const changeBodyRed = () => {
+            document.body.firstElementChild.style.background = "red";
+        };
+
+        // 7. Table-based navigation (if a table exists in your HTML)
+        let table = document.querySelector("table"); // Assuming there's a <table> tag
+        if (table) {
+            console.log(table.rows); // Logs all rows of the table
+            console.log(table.caption); // Logs the caption of the table if it exists
+            console.log(table.tHead.firstElementChild); // Logs the first element child of the table head
+            console.log(table.tFoot); // Logs the table footer if it exists
+            console.log(table.tBodies); // Logs the table body
+            console.log(table.rows[0]); // Logs the first row
+            console.log(table.rows[1].rowIndex); // Logs the index of the second row
+        }
+
+        // 8. Searching for DOM Elements
+        let cardTitle = document.getElementsByClassName("card-title")[0];
+        cardTitle.style.color = "red"; // Change color of the first card-title element
+
+        let cardId = document.getElementById("firstcard");
+        cardId.style.color = "green"; // Change color of the element with id "firstcard"
+
+        let ctitle = document.querySelectorAll(".card-title");
+        console.log(ctitle); // Logs all elements with class "card-title"
+
+        console.log(document.getElementsByTagName("a")); // Logs all <a> elements
+        console.log(document.querySelector(".card").getElementsByTagName("a")); // Logs all <a> elements inside the element with class "card"
+
+        // 9. matches, closest, and contains
+        let id1 = document.getElementById("id1");
+        let sp1 = document.getElementById("sp1");
+        console.log(id1); // Logs the element with id "id1"
+
+        // matches -> To check if the element matches a given CSS selector
+        console.log(id1.matches(".class")); // Checks if id1 has class "class" (returns false)
+        console.log(id1.matches(".box")); // Checks if id1 has class "box" (returns true)
+
+        // closest -> Looks up the nearest ancestor (including the element itself) that matches the given CSS selector
+        console.log(sp1.closest(".box")); // Logs the closest ancestor with class "box" (id1 in this case)
+
+        // contains -> Returns true if element B is a descendant of element A, or if A == B
+        console.log(id1.contains(sp1)); // true, because sp1 is inside id1
+        console.log(sp1.contains(id1)); // false, sp1 does not contain id1
+        console.log(sp1.contains(sp1)); // true, because an element contains itself
+    </script>
+
+</body>
+
+</html>

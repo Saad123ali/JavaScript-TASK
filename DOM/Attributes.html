@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Attributes and their methods</title>
+</head>
+
+<body>
+    <div id="first" class="hey" data-game = "gta" data-player="saad">Hey i am first container</div>
+
+    <script>
+        // getAttribute - > method used to get the value of an attribute
+
+        let a = first.getAttribute("class")
+        console.log(a)
+
+        // hasAttribute -> method to check for existance of an attribute
+
+        console.log(first.hasAttribute("class"))
+        console.log(first.hasAttribute("style"))
+
+        // setAttribute -> method used to set the value of an attribute
+
+        // let first = document.getElementById("first");
+        // first.setAttribute("hidden", "true")
+        first.setAttribute("class", "true sach")
+        // let element = document.querySelector('.true.sach');
+        // console.log(element); 
+
+        // removeattribute -> method used to remove the attribute form element
+        
+        // first.removeAttribute("class");
+        
+        // attributes -. method to get the collection of all attributes
+        console.log(first.attributes)
+
+        // The data-* attributes are used to store custom data private to the page or application. These attributes are specifically intended for embedding custom, private data directly into HTML elements, which can then be accessed via JavaScript.
+
+        console.log(first.dataset)
+        console.log(first.dataset.game)
+        console.log(first.dataset.player)
+
+    </script>
+</body>
+
+</html>
