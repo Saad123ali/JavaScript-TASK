@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Name- Class List</title>
+    <style>
+        .yellow{
+            background-color: yellow;
+            color: white;
+        }
+        .red
+        {
+            background-color: red;
+            color: white;
+        }
+        .text-dark
+        {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="first" class="yellow text-dark">
+        <span>Hey I am Saad</span>
+    </div>
+    <script>
+
+        // if we assign something to elem.className, it replace the whole string of classes
+        // often we want to add / remove / toggle a single class
+
+        // elem.classList.add / remove("className") -> adds or remove a class
+        first.className = "text-dark red";
+        first.classList.remove("red")
+        first.classList.add("red")
+        
+        // elem.classList.toggle("className") -> add the class if it doesnot exist, otherwise remove it 
+        first.classList.toggle("red")
+        first.classList.toggle("red")
+        first.classList.toggle("red")
+        
+        
+        // elem.classList.contain("className") -> checks for the given class , return true and flase
+        console.log(first.classList.contains("red"))
+        
+    </script>
+</body>
+</html>

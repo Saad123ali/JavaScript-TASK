@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Events</title>
+    <style>
+        /* Basic styling for buttons */
+        button {
+            margin: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Browser Events</h2>
+
+    <div>
+        <h3>Click Event</h3>
+        <button id="clickBtn">Click Me</button>
+    </div>
+
+    <div>
+        <h3>Mouse Over Event</h3>
+        <button id="mouseOverBtn">Hover Over Me</button>
+    </div>
+
+    <div>
+        <h3>Keyboard Event</h3>
+        <input type="text" id="keyInput" placeholder="Type something..." />
+    </div>
+
+    <div>
+        <h3>Form Submit Event</h3>
+        <form id="myForm">
+            <input type="text" placeholder="Enter your name" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div>
+        <h3>Window Resize Event</h3>
+        <button id="resizeBtn">Resize Window</button>
+    </div>
+
+    <script>
+        // Click Event: Triggered when an element is clicked.
+        document.getElementById('clickBtn').addEventListener('click', function() {
+            alert('Button Clicked!'); // Action performed on click
+        });
+
+        // Mouse Over Event: Triggered when the mouse pointer enters the area of an element.
+        document.getElementById('mouseOverBtn').addEventListener('mouseover', function() {
+            this.style.backgroundColor = 'lightblue'; // Change color on hover
+        });
+        document.getElementById('mouseOverBtn').addEventListener('mouseout', function() {
+            this.style.backgroundColor = ''; // Reset to original on mouse out
+        });
+
+        // Keyboard Event: Triggered when a key is pressed down on the keyboard.
+        document.getElementById('keyInput').addEventListener('keydown', function(e) {
+            console.log(`Key pressed: ${e.key}`); // Log the pressed key
+            if (e.key === 'Enter') {
+                alert('You pressed Enter!'); // Action performed on pressing Enter
+            }
+        });
+
+        // Form Submit Event: Triggered when a form is submitted.
+        document.getElementById('myForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            alert('Form Submitted! Name: ' + this.elements[0].value); // Display name
+        });
+
+        // Window Resize Event: Triggered when the browser window is resized.
+        window.addEventListener('resize', function() {
+            console.log(`Window resized to: ${window.innerWidth}x${window.innerHeight}`); // Log new dimensions
+        });
+
+        // Example of using removeEventListener
+        let resizeHandler = function() {
+            alert("You resized the window!"); // Action performed on resize
+        };
+        document.getElementById('resizeBtn').addEventListener('click', function() {
+            window.removeEventListener('resize', resizeHandler); // Stop alerts on resize
+            alert("You will no longer receive alerts on window resize.");
+        });
+        window.addEventListener('resize', resizeHandler); // Add resize event listener
+    </script>
+</body>
+
+</html>

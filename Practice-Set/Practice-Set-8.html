@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice-Set-8</title>
+    <style>
+        .blub
+        {
+            background: yellow;
+        }
+        .blub-container
+        {
+            height : 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="alert('click')">Click</button>
+    <button onclick="alert('click1')">Click1</button>
+    <button onclick="alert('click2')">Click2</button>
+    <button onclick="alert('click3')">Click3</button>
+
+    <h1>Bookmarks</h1>
+    <!-- <a href="https://goole.com"><button id="g">Google</button></a> -->
+    <a href="https://youtube.com"><button id="y">Youtube</button></a>
+    <a href="https://instagram.com"><button id="i">Insta</button></a>
+
+    <a href=""><button id="g">Google</button></a>
+    
+    <div id="blub" class="blub-container blub"></div>
+
+    <script>
+        // 1. write a program to show different alerts when different buttons are clicked  
+
+        // 2. create a website which is capable of strong bookmarks of your favourite website using href
+
+        // 3. repeat q 2 using even listeners
+        document.getElementById("g").addEventListener("click", function (e) {
+            window.location = "https://google.com"
+            win.focus();
+        })
+
+        // 4.write a program to keep fetching contents of a website ( every 5 sec)
+
+        // Function to fetch content from the given URL
+        async function fetchContent(url) {
+            try {
+                const response = await fetch(url); // Fetch data from the URL
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`); // Check for HTTP errors
+                }
+                const data = await response.json(); // Parse JSON data
+                return data; // Return the data
+            } catch (error) {
+                console.error("Failed to fetch content:", error); // Log any errors
+            }
+        }
+
+        // Set interval to fetch content every 3 seconds
+        setInterval(async function () {
+            let url = 'https://jsonplaceholder.typicode.com/todos/1'; // API endpoint
+            const result = await fetchContent(url); // Fetch content
+            console.log(result); // Log the result
+        }, 3000);
+
+        // 5. create a glowing blub effect using classlist toogle method in js
+
+        setInterval(function(){
+            document.querySelector('#blub').classList.toggle('blub');
+        },100)
+
+
+
+    </script>
+</body>
+
+</html>

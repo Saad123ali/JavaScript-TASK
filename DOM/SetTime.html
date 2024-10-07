@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval - setTimeout</title>
+</head>
+
+<body>
+
+    <h2>JavaScript setTimeout and setInterval Examples</h2>
+
+    <script>
+
+        // setTimeout allows us to run a function once after a given interval of time
+        document.write("Exploring setTimeout and setInterval in the console. Open the console to see the output.<br>")
+
+        // Example 1: setTimeout to run after 1 second (1000ms)
+        const sum = (a, b) => {
+            console.log("setTimeout Example: Sum is " + (a + b));
+        }
+
+        setTimeout(sum, 1000, 5, 7); // Will log the sum (5 + 7) after 1 second
+
+        // Example 2: clearTimeout to cancel a setTimeout before it executes
+        let timeoutId = setTimeout(function () {
+            console.log("This message will never be logged, because clearTimeout is called.");
+        }, 3000);
+
+        // Canceling the above timeout before it executes
+        clearTimeout(timeoutId);
+
+        // Example 3: setInterval to run every second
+        const sub = (a, b) => {
+            console.log("setInterval Example: Difference is " + (a - b));
+        }
+
+        let intervalId = setInterval(sub, 1000, 15, 4); // Will log (15 - 4) every second
+
+        // Example 4: clearInterval to stop setInterval after a few executions
+        setTimeout(() => {
+            clearInterval(intervalId); // Stopping the interval after 5 seconds
+            console.log("setInterval has been stopped after 5 seconds.");
+        }, 5000);
+
+        // Example 5: Repeated setTimeout (alternative to setInterval)
+        function repeatTimeout() {
+            console.log("Repeated setTimeout Example: This message appears every 2 seconds.");
+            setTimeout(repeatTimeout, 2000); // Recursively calls itself every 2 seconds
+        }
+
+        setTimeout(repeatTimeout, 2000); // Initial call after 2 seconds
+
+        // Example 6: Prompt and cancel timeout based on user input
+        let greetTimeout = setTimeout(() => {
+            alert("Hello! This message appears after 3 seconds unless canceled.");
+        }, 3000);
+
+        let userResponse = prompt("Do you want to cancel the greeting alert? (Enter 'yes' to cancel)");
+        if (userResponse.toLowerCase() === "yes") {
+            clearTimeout(greetTimeout); // Cancels the alert if the user says 'yes'
+            console.log("Greeting alert canceled by user.");
+        }
+
+    </script>
+
+</body>
+
+</html>
