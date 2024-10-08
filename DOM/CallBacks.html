@@ -44,9 +44,9 @@
         }
 
         // Callback function to process the loaded data
-        function processData(loaddata) {
+        function processData(data) {
             const outputDiv = document.getElementById('output');
-            outputDiv.innerHTML = `<p>Name: ${loaddata.name}</p><p>Age: ${loaddata.age}</p>`;
+            outputDiv.innerHTML = `<p>Name: ${data.name}</p><p>Age: ${data.age}</p>`;
             console.log("Data processed and displayed.");
         }
 
