@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallBacks</title>
+</head>
+
+<body>
+
+    <h2>CallBacks in JavaScript</h2>
+    <button id="myButton">Click Me</button>
+    <button id="loadDataButton">Load Data</button>
+    <div id="output"></div>
+    <script>
+
+        // Asynchronous actions are the actions that we ninitate now and they finish later eg settimeout   & synchronus actions are the actions that ninitate and finish one - by - one
+
+        // synchronous programming example
+
+        // let a = prompt("What is your name?")
+        // let b = prompt("What is your age?")
+        // let c = prompt("What is your Sex?")
+
+        // // synchronous programming example
+        // console.log("start")
+        // setTimeout(function(){
+        //     console.log("Hey i am Good"); 
+        // }, 3000)
+        // console.log("end")
+
+        // callbacks are the functions is a function passes into another function as an argument. which is then moved inside the outer function to complete an action 
+
+        function loadData(callback) {
+            console.log("Loading data...");
+
+            // Simulate a delay with setTimeout
+            setTimeout(() => {
+                const data = { name: "John Doe", age: 30 };
+                console.log("Data loaded:", data);
+                callback(data); // Call the callback with the loaded data
+            }, 2000); // Simulate a 2-second delay
+        }
+
+        // Callback function to process the loaded data
+        function processData(loaddata) {
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = `<p>Name: ${loaddata.name}</p><p>Age: ${loaddata.age}</p>`;
+            console.log("Data processed and displayed.");
+        }
+
+        // Event listener for button click
+        document.getElementById('loadDataButton').addEventListener('click', function() {
+            loadData(processData); // Pass processData as a callback to loadData
+        });
+        function loadScript(src, callback) {
+            let script = document.createElement("script");
+            script.src = src;
+            script.onload = function() {
+                console.log("Script loaded: " + src);
+                callback(null,src); // Call the callback function when the script is loaded
+            };
+            script.onerror = function() {
+                console.error("Failed to load script: " + src); // Log an error if the script fails to load
+                callback(new Error("src got some error "))
+            };
+            document.body.appendChild(script);
+        }
+
+        function hello(error, src) {
+            if(error)
+        {
+            console.log(error)
+        }
+            alert("Hello! Loaded: " + src);
+        }
+
+        function good(src) {
+            alert("Good! Loaded: " + src);
+        }
+
+        // Load Bootstrap JS and pass hello as the callback function
+        loadScript("https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js", hello);
+
+        // Example usage of Bootstrap after it's loaded
+        document.getElementById('myButton').addEventListener('click', function() {
+            alert('Button clicked! Bootstrap is loaded.');
+        });
+    </script>
+
+</body>
+
+</html>
