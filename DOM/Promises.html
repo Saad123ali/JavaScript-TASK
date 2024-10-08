@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises in js</title>
+</head>
+
+<body>
+    <h2>Promises in js</h2>
+
+    <script>
+
+        // promises is the solution to the callbacks hell because a promise is a promise of code of the code execution. the code either executes or fails in both the causes the user will be notified
+
+        // syntax
+
+        // let promise = new Promise(function(resolve, reject) {
+        // ....code 
+        // }
+
+        // let promise = new Promise(function (ressolve, reject) {
+        //     alert('promise alert');
+        //     ressolve(56);
+        // })
+        // console.log("Hello world")
+        // setTimeout(function () {
+        //     console.log("Hello world timeout")
+        // }, 2000)
+        // console.log("My name is Saad")
+        // console.log(promise)
+
+        // // promise have two values state , result
+        // // state : initially pending , then changes to either " fullfilled" when resolve is called or " rejected" when reject is called
+
+        // // result : initially undefined , then chnages to value , if resolved (value) or either reject (error)
+
+        // // Function to simulate fetching user data
+        // function fetchUserData() {
+        //     return new Promise((resolve, reject) => {
+        //         console.log("Fetching user data...");
+
+        //         // Simulate an asynchronous operation with setTimeout
+        //         setTimeout(() => {
+        //             const success = true; // Change this to false to simulate an error
+        //             if (success) {
+        //                 const userData = { name: "John Doe", age: 30 }; // Simulated user data
+        //                 resolve(userData); // Resolve the promise with the user data
+        //             } else {
+        //                 reject(new Error("Failed to fetch user data.")); // Reject the promise with an error
+        //             }
+        //         }, 2000); // Simulate a 2-second delay
+        //     });
+        // }
+
+        // // Using the Promise
+        // fetchUserData()
+        //     .then(userData => {
+        //         // Handle the resolved promise
+        //         console.log("User data loaded:", userData);
+        //     })
+        //     .catch(error => {
+        //         // Handle the rejected promise
+        //         console.error("Error:", error.message);
+        // });
+
+        // then  or catch 
+
+        // then  -> give the value and catch - > tell the erorr
+
+        // let p = new Promise((ressolve, reject) => {
+        //     console.log("promise in pending...")
+        //     setTimeout(() =>{
+        //         console.log("I am fulfilled promise ")
+        //         // ressolve(true);
+        //         // console.log(p);
+        //         reject(new Error("I am rejected promise"));
+        //     }, 5000)
+        // }); 
+        // let p2 = new Promise((ressolve, reject) => {
+        //     console.log("promise in pending...")
+        //     setTimeout(() =>{
+        //         console.log("I am fulfilled promise reject")
+        //         // ressolve(true);
+        //         // console.log(p);
+        //         reject(new Error("I am rejected promise"));
+        //     }, 5000)
+        // });
+
+        // console.log(p ,p2)
+
+        // p.then((value)=>{
+        //     console.log(value)
+        // },(err)=>{
+        //     console.log(err)
+        // })
+
+        // p2.catch((err)=>{
+        //     console.log("facing some error")
+        // });
+
+        // promises chaining  promises chaining .then calls
+
+        // we can chain promises and amke them pass the resolved values to one another like this
+
+        // let p3 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Resolved with in 2sec");
+        //         resolve(56);
+        //     }, 2000);
+        // })
+
+        // p3.then((value) => {
+        //     console.log(value)
+        //     let p4 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log("Resolved promise 2")
+        //             resolve("promise 2")
+        //         }, 2000)
+
+        //     })
+        //     return p4;
+        // }).then((value) => {
+        //     console.log("we are done")
+        //     return 2;
+        // }).then((value) => {
+        //     console.log(value)
+        // });
+
+        // Question  :  rewrite the loadscript function we wrote int the beginning of this using promises chaining 
+
+        const loadScript = (src) => {
+            return new Promise((resolve, reject) => {
+                let script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = src;
+                document.body.appendChild(script);
+
+                script.onload = () => {
+                    resolve(`Script ${src} has loaded`);
+                };
+
+                script.onerror = () => {
+                    reject(`Error loading script ${src}`);
+                };
+            });
+        };
+
+        // Loading the first script
+        loadScript("https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js")
+            .then((value) => {
+                console.log(value);
+                // Load the second script here, replace with your desired script URL
+                return loadScript("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js");
+            })
+            .then((value) => {
+                console.log(value); // Log if the second script loads successfully
+            })
+            .catch((error) => {
+                // This will catch any errors from both scripts
+                console.error(error);
+            });
+
+        // best example 
+        // Simulate fetching user data from a database
+        const fetchUserData = () => {
+            return new Promise((resolve, reject) => {
+                console.log("Fetching user data...");
+                setTimeout(() => {
+                    const success = true; // Change to false to simulate an error
+                    if (success) {
+                        resolve({ userId: 1, name: "John Doe" });
+                    } else {
+                        reject("Failed to fetch user data");
+                    }
+                }, 1000); // Simulate 1-second delay
+            });
+        };
+
+        // Simulate fetching user posts based on the userId
+        const fetchUserPosts = (user) => {
+            return new Promise((resolve, reject) => {
+                console.log(`Fetching posts for user: ${user.name}`);
+                setTimeout(() => {
+                    const success = true; // Change to false to simulate an error
+                    if (success) {
+                        resolve([{ postId: 101, title: "First Post" }, { postId: 102, title: "Second Post" }]);
+                    } else {
+                        reject("Failed to fetch user posts");
+                    }
+                }, 1000); // Simulate 1-second delay
+            });
+        };
+
+        // Simulate fetching comments on a specific post
+        const fetchPostComments = (postId) => {
+            return new Promise((resolve, reject) => {
+                console.log(`Fetching comments for post: ${postId}`);
+                setTimeout(() => {
+                    const success = true; // Change to false to simulate an error
+                    if (success) {
+                        resolve(["Great post!", "Very informative!", "Thanks for sharing!"]);
+                    } else {
+                        reject("Failed to fetch comments for the post");
+                    }
+                }, 1000); // Simulate 1-second delay
+            });
+        };
+
+        // Promise chain
+        fetchUserData()
+            .then((user) => {
+                console.log("User data:", user);
+                return fetchUserPosts(user); // Fetch posts after getting user data
+            })
+            .then((posts) => {
+                console.log("User posts:", posts);
+                return fetchPostComments(posts[0].postId); // Fetch comments for the first post
+            })
+            .then((comments) => {
+                console.log("Post comments:", comments);
+            })
+            .catch((error) => {
+                // Catch any error in the chain
+                console.error("Error:", error);
+            });
+
+
+    </script>
+</body>
+
+</html>
