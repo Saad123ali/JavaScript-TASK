@@ -1,0 +1,64 @@
+<!--  create aclock using js setinterval and data object in js  -->
+
+<!-- the data object can be load to get  the data time , hours , and seconds where can the be updated using setinteral   -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock Using JavaScript</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #282c34;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+        .clock {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        .time {
+            font-size: 3em;
+            margin: 0;
+        }
+        .date {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <h2>Create a Clock using JavaScript</h2>
+        <div class="time" id="time"></div>
+        <div class="date" id="date"></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const year = now.getFullYear();
+
+            document.getElementById('time').innerHTML = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('date').innerHTML = `${day}/${month}/${year}`;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+        // Initialize the clock immediately
+        updateClock();
+    </script>
+</body>
+</html>
